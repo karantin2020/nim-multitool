@@ -1,4 +1,5 @@
 import unittest, ../src/collections
+from future import `=>`
 
 proc foo(li: int, i: int, le: seq[int]): int =
   return li + li
@@ -28,6 +29,10 @@ suite "Test map procs":
   test "check result of chained map":
     var s1: seq[int] = @[12,23,34]
     check(s1.map(foo).map(foo) == @[48,92,136])
+
+  test "check result of map with arrow-like cb":
+    var s1: seq[int] = @[12,23,34]
+    check(s1.map((x:int,i:int)=>x+x) == @[24,46,68])
 
 suite "Test reduce procs":
   test "unchangable source data collection with reduce":
