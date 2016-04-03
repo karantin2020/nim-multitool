@@ -1,14 +1,11 @@
 template map_fn_mutable*(name: untyped): untyped =
   
-  ## Template for generic map proc that processes any
+  ## Template for mutable map proc that processes any
   ## collection of data with procs `[]` and `len`.
-  ## Returns data type T
+  ## Mutates data type K
   ## Map proc with long defined callback proc
   ## fn callback takes three arguments:
   ##   x:N       current value
-  ##   i:int     current index in collection
-  ##   ld:var T  processed collection
-  ## return data type is N
   proc name*[T,N,M,K](d: T, fn: proc(x:N): M {.closure.}, res: var K) =
     for i in 0..d.len-1: 
       res[i] = fn(d[i])

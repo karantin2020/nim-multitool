@@ -56,10 +56,11 @@ suite "Test mutable map procs":
     var s3 = newSeq[int](len s1)
     var s2 = s1
     s1.map((x:string)=>parseInt(x),s3)
-    echo name(type(s1))
-    echo name(type(s3))
     check(s2 == s1)
   
-  # test "check result of map":
-  #   var s1: seq[int] = @[12,23,34]
-  #   check(map(s1,foo) == @[24,46,68])
+  test "mutate source data with mutable map proc":
+    var s1: seq[string] = @["12","23","34"]
+    var s3 = newSeq[int](len s1)
+    s1.map((x:string)=>parseInt(x),s3)
+    check(s3 == @[12,23,34])
+  
