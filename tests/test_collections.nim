@@ -35,6 +35,15 @@ suite "Test map procs":
     var s1: seq[int] = @[12,23,34]
     check(s1.map((x:int,i:int)=>x+x) == @[24,46,68])
 
+  test "check map_fn_short_noresult":
+    var s1: seq[int] = @[12,23,34]
+    var ar1: array[3,int]
+    s1.map(proc(x:int,i:int) =
+      ar1[i] = x)
+    # echo name(type(ar1))
+    # echo repr ar1
+    check(ar1 == [12,23,34])
+
 suite "Test reduce procs":
   test "unchangable source data collection with reduce":
     var s1: seq[int] = @[12,23,34]
