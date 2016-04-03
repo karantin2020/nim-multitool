@@ -39,19 +39,31 @@ map_fn_short(each)
 map_fn_short(forEach)
   
 proc reduce*[T,N](d: T, fn: proc(y:N,x:N,i:int,ld:T): N {.closure.}): N =
-    var res: N
-    for i in 0..d.len-1: 
-      res = fn(res,d[i],i,d)
-    return res
+  
+  ## Generic reduce proc that processes any
+  ## collection of data with procs `[]` and `len`.
+  ## Returns data type N
+  var res: N
+  for i in 0..d.len-1: 
+    res = fn(res,d[i],i,d)
+  return res
     
 proc reduce*[T,N](d: T, fn: proc(y:N,x:N,i:int): N {.closure.}): N =
-    var res: N
-    for i in 0..d.len-1: 
-      res = fn(res,d[i],i)
-    return res
+  
+  ## Generic reduce proc that processes any
+  ## collection of data with procs `[]` and `len`.
+  ## Returns data type N
+  var res: N
+  for i in 0..d.len-1: 
+    res = fn(res,d[i],i)
+  return res
     
 proc reduce*[T,N](d: T, fn: proc(y:N,x:N): N {.closure.}): N =
-    var res: N
-    for i in 0..d.len-1: 
-      res = fn(res,d[i])
-    return res
+  
+  ## Generic reduce proc that processes any
+  ## collection of data with procs `[]` and `len`.
+  ## Returns data type N
+  var res: N
+  for i in 0..d.len-1: 
+    res = fn(res,d[i])
+  return res
