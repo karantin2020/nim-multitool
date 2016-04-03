@@ -1,6 +1,6 @@
 # Package
 
-version       = "0.1.0"
+version       = "0.1.1"
 author        = "karantin2020"
 description   = "Collection of common procs to use with data in nim"
 license       = "MIT"
