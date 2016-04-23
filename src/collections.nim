@@ -101,3 +101,5 @@ proc reduce*[T,N](d: T, fn: proc(y:N,x:N): N {.closure.}): N =
   for i in 0..d.len-1: 
     res = fn(res,d[i])
   return res
+
+
